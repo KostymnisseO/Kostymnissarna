@@ -7,7 +7,7 @@
 
         public function __construct()
         {
-            $this->$var = "Set in constructor";
+            $this->var = "Set in constructor";
         }
 
         public function helloClass()
@@ -17,7 +17,7 @@
             return "Output as return value";
         }
 
-        public function getVar() { return $this->$var; }
-        public function setVar($val) { $this->$var = $val; }
+        public function getVar() { return $this->var; }
+        public function setVar($val) { $this->var = $val; }
     }
 ?>
