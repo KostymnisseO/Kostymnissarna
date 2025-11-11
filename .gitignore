@@ -1,3 +1,6 @@
 # Ignore api folder and files
 api/
 *.api
+
+# Ignore redundant css file
+css/style.css
