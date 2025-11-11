@@ -1,0 +1,39 @@
+.push-button ,
+input[type=submit] ,
+button {
+    text-decoration: none;
+    color: var(--silver-100);
+    background-color: var(--mint);
+    border-radius: 0.8em;
+    padding: 0.8em 1em;
+    width: fit-content;
+    font-weight: 500;
+}
+
+.push-button:hover ,
+input[type=submit]:hover ,
+button:hover {
+    background-color: var(--mint-300);
+}
+
+input[type=text] ,
+input[type=password] ,
+textarea {
+    border-radius: 0.5em;
+    border: 2px solid var(--mint);
+    color: var(--mint-700);
+    padding: 0.7em;
+}
+
+a.login-option {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px var(--drop-shadow);
+    border-radius: 1em;
+    color: var(--mint);
+    padding: 2em;
+    font-weight: bold;
+    text-decoration: none;
+}

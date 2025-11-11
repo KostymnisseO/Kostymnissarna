@@ -1,0 +1,42 @@
+html * {
+    font-family: 'Inter', sans-serif; /* Weight from 100 to 900 */
+    background-color: var(--silver-100);
+    color: var(--slate-900);
+}
+
+body {
+    background-color: var(--silver-300);
+    margin: 0;
+}
+
+main {
+    max-width: 60em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    text-wrap: nowrap;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 8px var(--drop-shadow);
+    padding: 1.5em;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2em;
+}
+
+.container {
+    padding: 1.5em;
+    border-radius: 2em;
+    box-shadow: 0 3px 10px var(--drop-shadow);
+}

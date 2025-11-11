@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+:root {
+    /* --- Strawberry Colors --- */
+  /*--strawberry-100: #ff8c82;*/
+  /*--strawberry-300: #ed5353;*/
+  /*--strawberry: #c6262e;*/
+  /*--strawberry-700: #a10705;*/
+  /*--strawberry-900: #7a0000;*/
+
+  /* --- Orange Colors --- */
+  --orange-100: #ffc27d;
+  --orange-300: #ffa154;
+  --orange: #f37329;
+  --orange-700: #cc3b02;
+  --orange-900: #a62100;
+
+  /* --- Banana Colors --- */
+  /*--banana-100: #fff394;*/
+  /*--banana-300: #ffe16b;*/
+  /*--banana: #f9c440;*/
+  /*--banana-700: #d48e15;*/
+  /*--banana-900: #ad5f00;*/
+
+  /* --- Lime Colors --- */
+  /*--lime-100: #d1ff82;*/
+  /*--lime-300: #9bdb4d;*/
+  /*--lime: #68b723;*/
+  /*--lime-700: #3a9104;*/
+  /*--lime-900: #206b00;*/
+
+  /* --- Mint Colors --- */
+  --mint-100: #89ffdd;
+  --mint-300: #43d6b5;
+  --mint: #28bca3;
+  --mint-700: #0e9a83;
+  --mint-900: #007367;
+
+  /* --- Blueberry Colors --- */
+  /*--blueberry-100: #8cd5ff;*/
+  /*--blueberry-300: #64baff;*/
+  /*--blueberry: #3689e6;*/
+  /*--blueberry-700: #0d52bf;*/
+  /*--blueberry-900: #002e99;*/
+
+  /* --- Grape Colors --- */
+  /*--grape-100: #e4c6fa;*/
+  /*--grape-300: #cd9ef7;*/
+  /*--grape: #a56de2;*/
+  /*--grape-700: #7239b3;*/
+  /*--grape-900: #452981;*/
+
+  /* --- Bubblegum Colors --- */
+  /*--bubblegum-100: #fe9ab8;*/
+  /*--bubblegum-300: #f4679d;*/
+  /*--bubblegum: #de3e80;*/
+  /*--bubblegum-700: #bc245d;*/
+  /*--bubblegum-900: #910e38;*/
+
+  /* --- Latte Colors --- */
+  /*--latte-100: #efdfc4;*/
+  /*--latte-300: #e7c591;*/
+  /*--latte: #cfa25e;*/
+  /*--latte-700: #b6802e;*/
+  /*--latte-900: #804b00;*/
+
+  /* --- Cocoa Colors --- */
+  /*--cocoa-100: #a3907c;*/
+  /*--cocoa-300: #8a715e;*/
+  /*--cocoa: #715344;*/
+  /*--cocoa-700: #57392d;*/
+  /*--cocoa-900: #3d211b;*/
+
+  /* --- Silver Colors --- */
+  --silver-100: #fafafa;
+  --silver-300: #d4d4d4;
+  --silver: #abacae;
+  --silver-700: #7e8087;
+  --silver-900: #555761;
+
+  /* --- Slate Colors --- */
+  --slate-100: #95a3ab;
+  --slate-300: #667885;
+  --slate: #485a6c;
+  --slate-700: #273445;
+  --slate-900: #0e141f;
+
+  /* --- Misc. --- */
+  --drop-shadow: color-mix(in srgb, var(--slate-900) 15%, transparent);
+}
