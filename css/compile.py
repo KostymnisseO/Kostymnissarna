@@ -2,7 +2,7 @@ from os import scandir, path
 from datetime import datetime
 
 out_filename = 'style.css'
-out_dir = '../'
+out_dir = ''
 
 with open(out_dir+out_filename, 'w') as out_file:
     compiled_files={}
