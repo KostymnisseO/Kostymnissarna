@@ -1,6 +1,4 @@
-<?php
-  include_once('shared/erpnext.php');
-?>
+<?php include_once "shared/erpnext.php"; ?>
 
 <!DOCTYPE html>
 <html lang="sv">
@@ -10,14 +8,12 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <?php include "shared/header.php" ?>
+    <?php include "shared/header.php"; ?>
     <main class="container">
-      <div class="container">  
-        <?php
-            $erp = new ERPNextInterface();
-        ?>
+      <div class="container">
+        <?php $erp = new ERPNextInterface(); ?>
       </div>
     </main>
-    <footer></footer>
+    <?php include "shared/footer.php"; ?>
   </body>
 </html>
