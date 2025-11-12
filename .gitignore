@@ -1,6 +1,9 @@
-# Ignore api folder and files
+# API-token folder and files
 api/
 *.api
 
-# Ignore redundant css file
+# Redundant css file
 css/style.css
+
+# Generated temporary files
+*.*~

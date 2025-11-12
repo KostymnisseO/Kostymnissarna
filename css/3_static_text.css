@@ -41,7 +41,7 @@ nav>a::after {
     background-color: var(--mint-300);
     transition-property: opacity, left;
     transition-timing-function: ease-in-out;
-    transition-duration: 0.2s;
+    transition-duration: 0.4s;
 }
 
 nav>a:hover {
@@ -70,4 +70,22 @@ nav>a:hover::after {
     font-family: "Afacad Flux", sans-serif;
     color: var(--mint);
     font-size: x-large;
+}
+
+.staff-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: fit-content;
+}
+
+.staff-card table tr td:first-child{
+    color: var(--mint);
+    font-weight: bold;
+    text-align: right;
+}
+
+.staff-card table tr td:first-child::after{
+    content: ':';
 }
