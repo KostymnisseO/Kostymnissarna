@@ -14,8 +14,7 @@
     <main class="container">
       <div class="container">  
         <?php
-        // echo "Test<br>";
-        $erp = new ERPNextInterface();
+            $erp = new ERPNextInterface();
         ?>
       </div>
     </main>
