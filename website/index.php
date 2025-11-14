@@ -10,9 +10,14 @@
   <body>
     <?php include "shared/header.php"; ?>
     <main class="container">
-      <div class="container">
-        <?php $erp = new ERPNextInterface(); ?>
-      </div>
+        <?php
+            $erp = new ERPNextInterface();
+        ?>
+        <pre>
+        <?php
+           print_r($erp->fetchResource('User'));
+        ?>
+        </pre>
     </main>
     <?php include "shared/footer.php"; ?>
   </body>
