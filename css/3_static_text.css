@@ -1,3 +1,7 @@
+h1, h2, h3, h4, h5 {
+  color: var(--mint-900);  
+}
+
 /* h1 {
 
 } */
@@ -18,11 +22,11 @@
 
 } */
 
-/* a {
-} */
+a {
+    color: var(--mint);
+}
 
 nav>a {
-    color: var(--mint);
     font-weight: 500;
     text-decoration: none;
     position: relative;
@@ -53,6 +57,9 @@ nav>a:hover::after {
     left: 0;
 }
 
+footer a {
+    color: var(--silver-100);
+}
 
 .element-name {
     font-style: italic;
@@ -70,22 +77,4 @@ nav>a:hover::after {
     font-family: "Afacad Flux", sans-serif;
     color: var(--mint);
     font-size: x-large;
-}
-
-.staff-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    width: fit-content;
-}
-
-.staff-card table tr td:first-child{
-    color: var(--mint);
-    font-weight: bold;
-    text-align: right;
-}
-
-.staff-card table tr td:first-child::after{
-    content: ':';
 }
