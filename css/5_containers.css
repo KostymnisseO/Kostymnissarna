@@ -1,0 +1,55 @@
+/* 	5_CONTAINERS.CSS */
+.container {
+    padding: 1.5em;
+    border-radius: 1.8em;
+    box-shadow: 0 3px 10px var(--drop-shadow);
+}
+
+.login-option-container
+{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: center;
+    max-width: 30em;
+    margin: auto;
+    gap: 2em;
+}
+
+.staff-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: fit-content;
+}
+
+.staff-card table tr td:first-child{
+    color: var(--mint);
+    font-weight: bold;
+    text-align: right;
+}
+
+.staff-card table tr td:first-child::after{
+    content: ':';
+}
+
+.fade-in-test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    opacity: 1;
+    z-index: -10;
+    animation: stretch-in 0.7s ease-in;
+}
+
+@keyframes stretch-in {
+0% {opacity: 0;}
+100% {opacity: 1;}
+}
+
+.fade-in-test button {
+    min-width: 20em;
+    font-size: large;
+}

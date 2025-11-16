@@ -1,6 +1,5 @@
 .push-button ,
-input[type=submit] ,
-button {
+input[type=submit] {
     text-decoration: none;
     color: var(--silver-100);
     background-color: var(--mint);
@@ -8,12 +7,18 @@ button {
     padding: 0.8em 1em;
     width: fit-content;
     font-weight: 500;
+    border: none;
+}
+
+.push-button:hover ,
+input[type=submit]:hover {
+    background-color: var(--mint-300);
 }
 
 .push-button:hover ,
 input[type=submit]:hover ,
 button:hover {
-    background-color: var(--mint-300);
+    cursor: pointer;
 }
 
 input[type=text] ,
@@ -25,8 +30,8 @@ textarea {
     padding: 0.7em;
 }
 
-a.login-option {
-    display: inline-flex;
+.login-option {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -36,4 +41,7 @@ a.login-option {
     padding: 2em;
     font-weight: bold;
     text-decoration: none;
+    border: none;
+    flex-grow: 1;
+    font-size: medium;
 }
