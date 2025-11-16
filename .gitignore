@@ -2,8 +2,9 @@
 api/
 *.api
 
-# Redundant css file
+# Redundant duplicates
 css/style.css
+website/*exempel*
 
 # Generated temporary files
 *.*~
