@@ -140,9 +140,9 @@ footer {
     font-size: small;
 }
 
-footer * {
-    background-color: inherit;
-    color: inherit;
+footer *{
+    background-color: var(--mint);
+    color: var(--silver-100);
 }
 
 nav {
@@ -153,14 +153,12 @@ nav {
     gap: 2em;
 }
 
-.container {
-    padding: 1.5em;
-    border-radius: 1.8em;
-    box-shadow: 0 3px 10px var(--drop-shadow);
-}
-
 
 /* 	3_STATIC_TEXT.CSS */
+h1, h2, h3, h4, h5 {
+  color: var(--mint-900);  
+}
+
 /* h1 {
 
 } */
@@ -181,11 +179,11 @@ nav {
 
 } */
 
-/* a {
-} */
+a {
+    color: var(--mint);
+}
 
 nav>a {
-    color: var(--mint);
     font-weight: 500;
     text-decoration: none;
     position: relative;
@@ -216,6 +214,9 @@ nav>a:hover::after {
     left: 0;
 }
 
+footer a {
+    color: var(--silver-100);
+}
 
 .element-name {
     font-style: italic;
@@ -233,6 +234,73 @@ nav>a:hover::after {
     font-family: "Afacad Flux", sans-serif;
     color: var(--mint);
     font-size: x-large;
+}
+
+/* 	4_INPUT.CSS */
+.push-button ,
+input[type=submit] {
+    text-decoration: none;
+    color: var(--silver-100);
+    background-color: var(--mint);
+    border-radius: 0.8em;
+    padding: 0.8em 1em;
+    width: fit-content;
+    font-weight: 500;
+    border: none;
+}
+
+.push-button:hover ,
+input[type=submit]:hover {
+    background-color: var(--mint-300);
+}
+
+.push-button:hover ,
+input[type=submit]:hover ,
+button:hover {
+    cursor: pointer;
+}
+
+input[type=text] ,
+input[type=password] ,
+textarea {
+    border-radius: 0.5em;
+    border: 2px solid var(--mint);
+    color: var(--mint-700);
+    padding: 0.7em;
+}
+
+.login-option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px var(--drop-shadow);
+    border-radius: 1em;
+    color: var(--mint);
+    padding: 2em;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    flex-grow: 1;
+    font-size: medium;
+}
+
+/* 	5_CONTAINERS.CSS */
+.container {
+    padding: 1.5em;
+    border-radius: 1.8em;
+    box-shadow: 0 3px 10px var(--drop-shadow);
+}
+
+.login-option-container
+{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: center;
+    max-width: 30em;
+    margin: auto;
+    gap: 2em;
 }
 
 .staff-card {
@@ -253,44 +321,25 @@ nav>a:hover::after {
     content: ':';
 }
 
-/* 	4_INPUT.CSS */
-.push-button ,
-input[type=submit] ,
-button {
-    text-decoration: none;
-    color: var(--silver-100);
-    background-color: var(--mint);
-    border-radius: 0.8em;
-    padding: 0.8em 1em;
-    width: fit-content;
-    font-weight: 500;
-}
-
-.push-button:hover ,
-input[type=submit]:hover ,
-button:hover {
-    background-color: var(--mint-300);
-}
-
-input[type=text] ,
-input[type=password] ,
-textarea {
-    border-radius: 0.5em;
-    border: 2px solid var(--mint);
-    color: var(--mint-700);
-    padding: 0.7em;
-}
-
-a.login-option {
-    display: inline-flex;
+.fade-in-test {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 5px var(--drop-shadow);
-    border-radius: 1em;
-    color: var(--mint);
-    padding: 2em;
-    font-weight: bold;
-    text-decoration: none;
+    gap: 0.5em;
+    opacity: 1;
+    z-index: -10;
+    animation: stretch-in 0.7s ease-in;
 }
+
+@keyframes stretch-in {
+0% {opacity: 0;}
+100% {opacity: 1;}
+}
+
+.fade-in-test button {
+    min-width: 20em;
+    font-size: large;
+}
+
+
 
