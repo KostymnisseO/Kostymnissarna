@@ -5,7 +5,7 @@
   <nav>
     <a href="">Sida 1</a>
     <a href="">Sida 2</a>
-    <a href="">Sida 3</a>
+    <a href="contact.php">Kontakt</a>
     <a href="about.php">Om oss</a>
   </nav>
   <a class="push-button" href="login.php">Logga in</a>
