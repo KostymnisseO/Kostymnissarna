@@ -44,4 +44,5 @@ textarea {
     border: none;
     flex-grow: 1;
     font-size: medium;
+    flex-basis: 50%;
 }
