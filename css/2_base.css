@@ -37,7 +37,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--mint);
+    background-color: var(--azure);
     color: var(--silver-100);
     box-shadow: 0 -3px 8px var(--drop-shadow);
     padding: 1.5em;
@@ -46,7 +46,7 @@ footer {
 }
 
 footer *{
-    background-color: var(--mint);
+    background-color: var(--azure);
     color: var(--silver-100);
 }
 

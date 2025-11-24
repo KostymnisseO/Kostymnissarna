@@ -2,7 +2,7 @@
 input[type=submit] {
     text-decoration: none;
     color: var(--silver-100);
-    background-color: var(--mint);
+    background-color: var(--azure);
     border-radius: 0.8em;
     padding: 0.8em 1em;
     width: fit-content;
@@ -12,7 +12,7 @@ input[type=submit] {
 
 .push-button:hover ,
 input[type=submit]:hover {
-    background-color: var(--mint-300);
+    background-color: var(--ocean);
 }
 
 .push-button:hover ,
@@ -25,7 +25,7 @@ input[type=text] ,
 input[type=password] ,
 textarea {
     border-radius: 0.5em;
-    border: 2px solid var(--mint);
+    border: 2px solid var(--azure);
     color: var(--mint-700);
     padding: 0.7em;
 }
@@ -37,7 +37,7 @@ textarea {
     align-items: center;
     box-shadow: 0 2px 5px var(--drop-shadow);
     border-radius: 1em;
-    color: var(--mint);
+    color: var(--azure);
     padding: 2em;
     font-weight: bold;
     text-decoration: none;

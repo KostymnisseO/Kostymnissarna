@@ -1,4 +1,3 @@
-/* 	5_CONTAINERS.CSS */
 .container {
     padding: 1.5em;
     border-radius: 1.8em;
@@ -25,7 +24,7 @@
 }
 
 .staff-card table tr td:first-child{
-    color: var(--mint);
+    color: var(--azure);
     font-weight: bold;
     text-align: right;
 }

@@ -1,5 +1,5 @@
 h1, h2, h3, h4, h5 {
-  color: var(--mint-900);  
+  color: var(--ocean);  
 }
 
 /* h1 {
@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5 {
 } */
 
 a {
-    color: var(--mint);
+    color: var(--azure);
 }
 
 nav>a {
@@ -42,14 +42,14 @@ nav>a::after {
     bottom: 0px;
     left: -100%;
     opacity: 0%;
-    background-color: var(--mint-300);
+    background-color: var(--ocean);
     transition-property: opacity, left;
     transition-timing-function: ease-in-out;
     transition-duration: 0.4s;
 }
 
 nav>a:hover {
-    color: var(--mint-300);
+    color: var(--ocean);
 }
 
 nav>a:hover::after {
@@ -75,6 +75,6 @@ footer a {
 
 .logo *{
     font-family: "Afacad Flux", sans-serif;
-    color: var(--mint);
+    color: var(--azure);
     font-size: x-large;
 }
