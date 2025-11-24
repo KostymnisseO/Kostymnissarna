@@ -29,7 +29,7 @@ class ERPNextInterface
         {
             $this->printError("ERPNext Error", "Missing API key.");
         }
-
+        
         /*  
             för POST:
                 CURLOPT_POST => true,
@@ -42,7 +42,7 @@ class ERPNextInterface
         $this->defaultCurlOptArr = [
             CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
             // CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_RETURNTRANSFER => true, // Required to rerieve the response as a string, otherwise gets flushed out on the webpage
+            CURLOPT_RETURNTRANSFER => true, // Required to rerieve the response as a string, otherwise gets flushed out on the webpage. Comment out to get the error traceback!
             CURLOPT_COOKIEJAR => $this->cookiepath,
             CURLOPT_COOKIEFILE => $this->cookiepath,
             CURLOPT_TIMEOUT => $this->timeout,
@@ -61,29 +61,22 @@ class ERPNextInterface
 
     // }
 
-    public function updateDocType(string $doctype, string $name, array $data)
+    public function createDocType(string $doctype, array $fields)
     {
+        //We have to find some way of identifying Mandatory fields
+
         $this->resetCurlHandle();
 
-        echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype) . '/' . $name;
+        echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype);
 
+        echo '<pre>';
+        print_r(json_encode($fields));
+        echo '</pre>';
+
+        curl_setopt($this->ch, CURLOPT_POST, true);
         curl_setopt($this->ch, CURLOPT_URL, $url);
-        curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-
-
-        return $this->request();
-    }
-    
-    
-    public function deleteDocType(string $doctype, string $name)
-    {
-        $this->resetCurlHandle();
-        
-        // Verify the existence of the doctype first?
-
-        echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype) . '/' . $name;
-        curl_setopt($this->ch, CURLOPT_URL, $url);
+        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
+        curl_setopt($this->ch, CURLOPT_POSTFIELDS, json_encode($fields));
 
         return $this->request();
     }
@@ -93,8 +86,8 @@ class ERPNextInterface
     {
         $this->resetCurlHandle();
 
-        $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype) . '/' . $name;
-        echo $url .= $expand ? '?expand_links='.$expand : ''; // NOTE: Documentation example shows 'True' with capital T. If there's an error, check if this is some dumb case sensitivity.
+        $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
+        echo $url .= $expand ? '?expand_links=True' : ''; // NOTE: Documentation example shows 'True' with capital T. If there's an error, check if this is some dumb case sensitivity.
 
         curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($this->ch, CURLOPT_URL, $url);
@@ -118,21 +111,35 @@ class ERPNextInterface
 
         return $this->request();
     }
-    
-    
-    public function createDocType(string $doctype, array $fields)
+
+
+    public function updateDocType(string $doctype, string $name, array $data)
     {
         $this->resetCurlHandle();
-        
-        echo '<pre>';
-        print_r($fields);
-        echo '</pre>';
-        
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($this->ch, CURLOPT_URL, $this->baseurl . 'api/method/frappe.auth.get_logged_user');
-        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-        
+
+        echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
+
+        curl_setopt($this->ch, CURLOPT_URL, $url);
+        curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($this->ch, CURLOPT_POSTFIELDS, json_encode($data));
+
+
+        return $this->request();
+    }
+
+
+    public function deleteDocType(string $doctype, string $name)
+    {
+        $this->resetCurlHandle();
+
+        // Verify the existence of the doctype first?
+        // We get a "does not exist error" in the response
+
+        echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
+
+        curl_setopt($this->ch, CURLOPT_URL, $url);
+        curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+
         return $this->request();
     }
 
@@ -153,7 +160,7 @@ class ERPNextInterface
         {
             $this->printError(curl_errno($this->ch), curl_error($this->ch));
         }
-        
+
         return $response;
     }
 
