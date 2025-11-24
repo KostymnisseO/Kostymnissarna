@@ -39,7 +39,6 @@
     align-items: center;
     gap: 0.5em;
     opacity: 1;
-    z-index: -10;
     animation: stretch-in 0.7s ease-in;
 }
 
