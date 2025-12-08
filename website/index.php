@@ -1,4 +1,4 @@
-<?php include_once "shared/erpnext.php"; ?>
+<?php include_once "shared/erpnextinterface.php"; ?>
 
 <!DOCTYPE html>
 <html lang="sv">
@@ -13,11 +13,13 @@
         <?php
             $erp = new ERPNextInterface();
         ?>
+
         <pre>
         <?php
-           print_r($erp->fetchResource('User'));
+           print_r($erp->fetchAll('User'));
         ?>
         </pre>
+        
     </main>
     <?php include "shared/footer.php"; ?>
   </body>
