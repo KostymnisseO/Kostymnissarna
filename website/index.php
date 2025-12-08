@@ -1,4 +1,4 @@
-<?php include_once "shared/erpnext.php"; ?>
+<?php include_once "shared/erpnextinterface.php"; ?>
 
 <!DOCTYPE html>
 <html lang="sv">
@@ -15,7 +15,7 @@
         ?>
         <pre>
         <?php
-           print_r($erp->fetchResource('User'));
+           print_r($erp->fetchAll('User', filters:[['first_name', '=', 'Hugo']]));
         ?>
         </pre>
     </main>
