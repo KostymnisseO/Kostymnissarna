@@ -7,7 +7,7 @@
   </head>
   <body>
     <?php include "shared/header.php"; ?>
-    <main style="text-align:center;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;gap:2em;padding:2em;">
+    <main style="text-align:center;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:2em;padding:2em;">
         <form class="login-option-container" method="GET">
           <button class="login-option" name="login-as" value="patient">
             <img src="" alt="🩹" style="font-size:5em;">
@@ -15,7 +15,7 @@
           </button>
           <a class="login-option" href="http://193.93.250.83:8080/">
             <img src="" alt="🩺" style="font-size:5em;">
-            Logga in som anställd
+            Logga in som anställd &rarr;
           </a>
         </form>
         <?php
@@ -24,19 +24,7 @@
           {
             if(isset($_POST['login-with']))
             {
-                echo '<div class="container">';
-                echo '<img style="max-height:7em;" src="https://www.bankid.com/assets/logo-bank-id-Bw0xWKml.svg" alt="BankID">';
-                echo '<br>';
-                echo '<br>';
-                echo '<div class="bankid-qr">';
-                echo '<img class="fade-in-test" style="border:2px dotted var(--azure); padding:1.5em; border-radius:1em;max-height:14em;margin:auto;" src="https://randomqr.com/assets/images/rickroll-qrcode.webp" alt="BankID">';
-                echo '</div>';
-                echo '<br>';
-                echo '<br>';
-                echo 'Skanna QR-koden med BankID-appen på din telefon.';
-                echo '<br>';
-                echo '<a href="https://crouton.net/">Legitimera med BankID på denna enhet</a>';
-                echo '</div>';
+                include "shared/bankid.php";
             }
             else
             {
