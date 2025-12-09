@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 
 <?php
-    // if (isset($_SESSION['uid']))
-    // {
-    //     continue;
-    // }
-    // else
-    // {
-    //     continue; //redirect
-    // }
+    include_once "shared/sessionmanager.php";
+    include_once "shared/erpnextinterface.php";
+    $sesh = new SessionManager();
+    
+    if (!$sesh->active())
+    {
+        header("Location: logout.php");
+        exit();
+    }
 ?>
 
 <html lang="sv">
@@ -21,9 +22,26 @@
 <body>
     <?php include "shared/header.php"?>
     <div class="profile-grid">
-        <h1>
-            <?php echo true ? "Hej " . "Användare" : ""; ?>
-        </h1>
+        <?php 
+            $erp = new ERPNextInterface();
+            
+            if ($sesh->active())
+            {
+                $result = $erp->fetchAll('Patient', filters: [["Patient", "uid", "=", $sesh->id()]]);
+                
+                if (sizeof($result['data']) == 1)
+                {
+                    $usr = $result['data']['0'];
+                }
+                
+                echo "<h1>" . "Hej " . $usr['name'] . "!" . "</h1>";
+                echo "<h3>" . "Hur kan vi hjälpa dig idag?" . "</h3>";
+            }
+            else
+            {
+                echo "<h1>" . "Här får du inte vara!" . "</h1>";
+            }
+        ?>
         <main>
             <?php
                 if (true /* är vårdtagare */)
