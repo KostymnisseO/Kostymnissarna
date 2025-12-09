@@ -5,8 +5,15 @@
     
     
     include_once "shared/erpnextinterface.php";
-    // include_once "shared/sessionmanager.php";
-    session_start();
+    include_once "shared/sessionmanager.php";
+    $sesh = new SessionManager();
+    
+    if ($sesh->active())
+    {
+        header("Location: index.php");
+        exit();
+    }
+    
     
     print_r($_POST);
     
@@ -23,7 +30,7 @@
         {
             $usr = $result['data']['0'];
 
-            $_SESSION['id'] = $usr['uid'];
+            $sesh->register($usr['uid']);
             header("Location: profile.php");
         }
         else

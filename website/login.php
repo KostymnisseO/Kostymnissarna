@@ -1,3 +1,14 @@
+<?php
+    include_once "shared/sessionmanager.php";
+    $sesh = new SessionManager();
+    
+    if ($sesh->active())
+    {
+        header("Location: index.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="sv">
   <head>
