@@ -11,7 +11,7 @@ class ERPNextInterface
     private $key = "";
     private $baseurl = "http://193.93.250.83:8080/";
     private $cookiepath = "/tmp/cookies.txt";
-    private $timeout = 60;
+    private $timeout = 3600;
     private $defaultCurlOptArr = [];
     private $ch;
 
@@ -29,8 +29,8 @@ class ERPNextInterface
         {
             $this->printError("ERPNext Error", "Missing API key.");
         }
-        
-        /*  
+
+        /*
             för POST:
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => "{ 'key':'val', 'key':'val', ...}"
@@ -66,8 +66,9 @@ class ERPNextInterface
         //We have to find some way of identifying Mandatory fields
 
         $this->resetCurlHandle();
-
-        echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype);
+        
+        $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype);
+        echo $url;
 
         echo '<pre>';
         print_r(json_encode($fields));
@@ -75,7 +76,7 @@ class ERPNextInterface
 
         curl_setopt($this->ch, CURLOPT_POST, true);
         curl_setopt($this->ch, CURLOPT_URL, $url);
-        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
+        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json', 'Authorization: token ' . $this->key));
         curl_setopt($this->ch, CURLOPT_POSTFIELDS, json_encode($fields));
 
         return $this->request();
@@ -87,11 +88,13 @@ class ERPNextInterface
         $this->resetCurlHandle();
 
         $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
-        echo $url .= $expand ? '?expand_links=True' : ''; // NOTE: Documentation example shows 'True' with capital T. If there's an error, check if this is some dumb case sensitivity.
+        $url .= $expand ? '?expand_links=True' : '';
+        
+        echo $url;
 
         curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($this->ch, CURLOPT_URL, $url);
-        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
+        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json', 'Authorization: token ' . $this->key));
 
 
         return $this->request();
@@ -102,12 +105,13 @@ class ERPNextInterface
     {
         $this->resetCurlHandle();
         $query = new ERPNextListQuery($fields, $filters, $pageLength, $startPage, $expands);
-
-        echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype) . $query->queryString();
+        
+        $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype) . $query->queryString();
+        // echo $url;
 
         curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($this->ch, CURLOPT_URL, $url);
-        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
+        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json', 'Authorization: token ' . $this->key));
 
         return $this->request();
     }
@@ -116,12 +120,14 @@ class ERPNextInterface
     public function updateDocType(string $doctype, string $name, array $data)
     {
         $this->resetCurlHandle();
-
-        echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
+        
+        $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
+        echo $url;
 
         curl_setopt($this->ch, CURLOPT_URL, $url);
         curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'PUT');
         curl_setopt($this->ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Authorization: token ' . $this->key));
 
 
         return $this->request();
@@ -134,11 +140,13 @@ class ERPNextInterface
 
         // Verify the existence of the doctype first?
         // We get a "does not exist error" in the response
-
+        
         echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
+        echo $url;
 
         curl_setopt($this->ch, CURLOPT_URL, $url);
         curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Authorization: token ' . $this->key));
 
         return $this->request();
     }
