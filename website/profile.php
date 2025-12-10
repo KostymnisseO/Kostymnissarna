@@ -46,9 +46,9 @@
             <?php
                 if (true /* är vårdtagare */)
                 {
-                    echo '<a class="profile-link" href=""><img src="" alt="⚪"/>Min Sida 1</a>';
-                    echo '<a class="profile-link" href=""><img src="" alt="⚪"/>Min Sida 2</a>';
-                    echo '<a class="profile-link" href=""><img src="" alt="⚪"/>Min Sida 3</a>';
+                    echo '<a class="profile-link" href=""><img src="" alt="⚪" style="font-size:7em"/>Min Sida 1</a>';
+                    echo '<a class="profile-link" href="treatments.php"><img src="" alt="⚪" style="font-size:7em"/>Mina Behandlingar</a>';
+                    echo '<a class="profile-link" href=""><img src="" alt="⚪" style="font-size:7em"/>Min Sida 3</a>';
                 }
                 else if (false /* är vårdpersonal */)
                 {
