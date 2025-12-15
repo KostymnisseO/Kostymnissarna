@@ -53,6 +53,16 @@
                             '<p>' . 'Vid ytterligare frågor, vänligen kontakta vårdcentralen. Klicka ' . '<a href="contact.php">här</a>' . ' för att se vår kontaktinformation och våra öppettider.' . '</p>';
                         
                         /* --- RESULTS --- */
+                        ?>
+                        
+                        <label for="toggleResults"><h3>Visa / Dölj Provsvar</h3></label>
+                        <p> För att visa dina provsvar behöver du godkänna att det kan visas upprörande, schockerande eller livsändrande information du nödvndigtvis inte var beredd för</p>
+                        <input type="checkbox" id="toggleResults" onclick="toggleResultsView()">
+                        <label for="toggleResults">Tryck här ifall du godkänner att se provsvar</label>
+                        
+                        <div id="resultsContainer" style="display: none;">
+
+                        <?php
                         echo '<h2>' . '🔵 Provsvar' . '</h2>';
                         $labTests = $erp->fetchAll(
                             'Lab Test'
@@ -98,7 +108,9 @@
                             
                             echo '</div>';
                         }
-                        
+                        ?>
+                        </div>
+                        <?php
 
                         /* --- ONGOING (DRAFTS) --- */
                         echo '<h2>' . '🟡 Pågående' . '</h2>';
@@ -186,5 +198,19 @@
         ?>
     </main>
     <?php include 'shared/footer.php'?>
+
+    <script>
+    function toggleResultsView(){
+        var checkbox = document.getElementById("toggleResults");
+        var container = document.getElementById("resultsContainer");
+
+        if(checkbox.checked){
+            container.style.display = "block";
+        } else {
+            container.style.display = "none";
+    }
+}
+    </script>
+
 </body>
 </html>
