@@ -13,11 +13,16 @@
         $erp = new ERPNextInterface(); 
         echo "<pre>";
         $sak = $erp->fetchAll('Healthcare Practitioner', pageLength:120, filters:[['first_name', 'like', '%G2%']], fields:['first_name', 'last_name', 'gender', 'department']);
-        print_r($sak);
+        //print_r($sak);
         echo "</pre>";
         ?>
+        
         <h1>Vårdcentralen i Mölndal</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor nunc at viverra congue. Nullam consectetur gravida eros viverra aliquam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur volutpat libero sed odio posuere viverra. In ipsum arcu, vulputate nec justo vel, cursus tristique tortor. Praesent vitae justo non lorem fringilla blandit. Nunc vitae quam varius, porta turpis sed, vestibulum mi. Mauris aliquet egestas justo non iaculis. Donec gravida quam eu mi eleifend, quis ullamcorper mi semper. Etiam vel diam sit amet tortor sagittis finibus volutpat non nisl. Morbi eu facilisis diam. Vestibulum auctor condimentum mattis. Duis nec tincidunt ligula, et malesuada purus. </p>
+        <p>Välkommen till Vårdcentralen i Mölndal – din lokala vårdcentral med fokus på trygg, tillgänglig och personcentrerad vård. Vi finns här för dig genom hela livet och erbjuder hälso- och sjukvård av hög kvalitet för både barn och vuxna.</p>
+        <h2>Vårt uppdrag</h2>
+        <p>Vårt uppdrag är att främja hälsa, förebygga sjukdom och ge god vård när du behöver den. Vi möter varje patient med respekt, lyhördhet och professionalitet, och strävar efter att skapa långsiktiga relationer där du känner dig sedd och delaktig.</p>
+        <h1>Vårt team</h1>
+
         <div class="staff-view">
                     <?php 
                         $rows =$sak['data'] ?? [];
