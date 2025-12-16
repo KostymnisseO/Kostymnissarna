@@ -1,7 +1,7 @@
 <?php
     include_once "shared/sessionmanager.php";
     $sesh = new SessionManager();
-    
+
     if ($sesh->active())
     {
         header("Location: index.php");
@@ -43,10 +43,11 @@
             }
           }
         ?>
-        <div class="container">
+        <div>
           <h1>Alla ska ha rätt till en god vård.</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor nunc at viverra congue. Nullam consectetur gravida eros viverra aliquam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur volutpat libero sed odio posuere viverra. In ipsum arcu, vulputate nec justo vel, cursus tristique tortor. Praesent vitae justo non lorem fringilla blandit. Nunc vitae quam varius, porta turpis sed, vestibulum mi. Mauris aliquet egestas justo non iaculis. Donec gravida quam eu mi eleifend, quis ullamcorper mi semper. Etiam vel diam sit amet tortor sagittis finibus volutpat non nisl. Morbi eu facilisis diam. Vestibulum auctor condimentum mattis. Duis nec tincidunt ligula, et malesuada purus. </p>
-          <a href="">Klicka här för att lista dig hos Vårdcentralen i Mölndal</a>
+          <a href="">Klicka här om du vill lista dig hos Vårdcentralen i Mölndal</a>
+          <p>På Vårdcentralen i Mölndal är vår grundläggande övertygelse att rätten till en god och jämlik vård utgör hjärtat i ett tryggt samhälle. För oss innebär detta att varje invånare, oavsett bakgrund eller livssituation, ska ha tillgång till medicinsk expertis som präglas av både hög kompetens och djup mänsklig värme. Genom att kombinera det lokala perspektivet med en modern vård bär vi ett gemensamt ansvar för att du som patient alltid ska känna dig sedd, hörd och prioriterad. Vi strävar efter att vara en tillgänglig resurs som inte bara behandlar sjukdom, utan som främjar hälsa genom hela livet, där din rätt till god vård alltid står i centrum för varje beslut vi fattar och varje möte vi skapar här i Mölndal.</p>
+          <h2>Välkommen till Din vårdcentral i Mölndal.</h2>
         </div>
     </main>
     <?php include "shared/footer.php"; ?>
