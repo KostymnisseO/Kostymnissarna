@@ -24,7 +24,7 @@
             <img src="" alt="🩹" style="font-size:5em;">
             Logga in som privatperson
           </button>
-          <a class="login-option" href="http://193.93.250.83:8080/">
+          <a class="login-option" href="http://193.93.250.83:8080/login#login">
             <img src="" alt="🩺" style="font-size:5em;">
             Logga in som anställd &rarr;
           </a>
