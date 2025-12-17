@@ -10,7 +10,7 @@ class ERPNextInterface
     private $apiFile = "shared/api/erpnext.api";
     private $key = "";
     private $baseurl = "http://193.93.250.83:8080/";
-    private $cookiepath = "/tmp/cookies.txt";
+    private $cookiepath = "/tmp/G2cookies.txt";
     private $timeout = 3600;
     private $defaultCurlOptArr = [];
     private $ch;
@@ -22,7 +22,7 @@ class ERPNextInterface
         // Importera nyckel från fil
         if (file_exists($this->apiFile))
         {
-            $this->key = file_get_contents($this->apiFile);
+            $this->key = trim(file_get_contents($this->apiFile));
             // echo "API key found!";
         }
         else
@@ -63,19 +63,17 @@ class ERPNextInterface
 
     public function createDocType(string $doctype, array $fields)
     {
-        //We have to find some way of identifying Mandatory fields
 
         $this->resetCurlHandle();
-        
+
         $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype);
-        echo $url;
 
-        echo '<pre>';
-        print_r(json_encode($fields));
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r(json_encode($fields));
+        // echo '</pre>';
 
-        curl_setopt($this->ch, CURLOPT_POST, true);
         curl_setopt($this->ch, CURLOPT_URL, $url);
+        curl_setopt($this->ch, CURLOPT_POST, true);
         curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json', 'Authorization: token ' . $this->key));
         curl_setopt($this->ch, CURLOPT_POSTFIELDS, json_encode($fields));
 
@@ -89,8 +87,8 @@ class ERPNextInterface
 
         $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
         $url .= $expand ? '?expand_links=True' : '';
-        
-        echo $url;
+
+        // echo $url;
 
         curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($this->ch, CURLOPT_URL, $url);
@@ -105,7 +103,7 @@ class ERPNextInterface
     {
         $this->resetCurlHandle();
         $query = new ERPNextListQuery($fields, $filters, $pageLength, $startPage, $expands);
-        
+
         $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype) . $query->queryString();
         // echo $url;
 
@@ -120,7 +118,7 @@ class ERPNextInterface
     public function updateDocType(string $doctype, string $name, array $data)
     {
         $this->resetCurlHandle();
-        
+
         $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
         echo $url;
 
@@ -140,7 +138,7 @@ class ERPNextInterface
 
         // Verify the existence of the doctype first?
         // We get a "does not exist error" in the response
-        
+
         echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
         echo $url;
 
