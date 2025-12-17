@@ -14,9 +14,6 @@
         exit();
     }
     
-    
-    print_r($_POST);
-    
     if (isset($_POST['pnr'])
         and !empty($_POST['pnr'])
         and preg_match('/[0-9]{12}/', $_POST['pnr']))
