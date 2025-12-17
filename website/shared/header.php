@@ -4,7 +4,7 @@
 ?>
 
 <header>
-  <a class="logo" href="http://193.93.250.83/wwwit-utv/Grupp2/dev/oscar/">
+  <a class="logo" href="index.php">
     <img src="" alt="Mölndals Vårdcentral">
   </a>
   <nav>
