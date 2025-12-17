@@ -46,3 +46,35 @@ textarea {
     font-size: medium;
     flex-basis: 50%;
 }
+
+.bankid-qr {
+    position: relative;
+    overflow: visible;
+}
+
+.bankid-qr::after {
+    display: block;
+    position: absolute;
+    content: "";
+    height: 2px;
+    bottom: -1em;
+    background-color: var(--azure);
+    animation: loading 2s ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes loading {
+    0% {
+        width: 2%;
+        left: 0%;
+    }
+    50%{
+        width: 20%;
+        left: 40%;
+    }
+    100%{
+        width: 2%;
+        left: 98%;
+    }
+}
