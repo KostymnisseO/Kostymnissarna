@@ -1,10 +1,10 @@
 h1, h2, h3, h4, h5 {
-  color: var(--ocean);  
+  color: var(--ocean);
 }
 
-/* h1 {
-
-} */
+h1 {
+  font-weight: 200; 
+}
 
 /* h2 {
 
@@ -26,8 +26,8 @@ a {
     color: var(--azure);
 }
 
+
 nav>a {
-    font-weight: 500;
     text-decoration: none;
     position: relative;
     overflow: hidden;
@@ -67,7 +67,7 @@ footer a {
 
 .logo *{
     font-family: "Noto Serif Display", sans-serif;
-    color: var(--azure);
+    color: var(--ocean);
     font-size: xx-large;
 }
 

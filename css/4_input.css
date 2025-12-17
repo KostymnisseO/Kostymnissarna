@@ -59,22 +59,25 @@ textarea {
     height: 2px;
     bottom: -1em;
     background-color: var(--azure);
-    animation: loading 2s ease-in-out;
+    animation: loading 2s linear;
     animation-iteration-count: infinite;
-    animation-direction: alternate-reverse;
+    animation-direction: alternate;
 }
 
 @keyframes loading {
     0% {
         width: 2%;
         left: 0%;
+        animation-timing-function: ease-in;
     }
     50%{
         width: 20%;
         left: 40%;
+        animation-timing-function: ease-out;
     }
     100%{
         width: 2%;
         left: 98%;
+        animation-timing-function: ease-in;
     }
 }
