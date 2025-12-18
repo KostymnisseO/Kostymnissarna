@@ -33,8 +33,8 @@
             </div>
           <h2>Viktiga upplysningar</h2>
             <div>
-              <p>För icke-akuta medicinska frågor, kom ihåg att 1177 alltid finns tillgängliga med information om diverse olika symptom</p>
-              <p>Vid akuta situationer, ring alltid 112</p>
+              <p>För icke-akuta medicinska frågor, kom ihåg att <a href="https://www.1177.se" target="_blank">1177.se</a> alltid finns tillgängliga med information om diverse olika symptom</p>
+              <p>Vid akuta situationer, ring alltid <strong>112</strong></p>
           </div>
     </main>
     <?php include "shared/footer.php"; ?>
