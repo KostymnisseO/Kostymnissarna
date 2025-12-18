@@ -65,6 +65,9 @@ class ERPNextInterface
     {
 
         $this->resetCurlHandle();
+        
+        $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype);
+        echo $url;
 
         $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype);
 
@@ -103,6 +106,9 @@ class ERPNextInterface
     {
         $this->resetCurlHandle();
         $query = new ERPNextListQuery($fields, $filters, $pageLength, $startPage, $expands);
+        
+        $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype) . $query->queryString();
+        // echo $url;
 
         $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype) . $query->queryString();
         // echo $url;
@@ -118,6 +124,9 @@ class ERPNextInterface
     public function updateDocType(string $doctype, string $name, array $data)
     {
         $this->resetCurlHandle();
+        
+        $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
+        echo $url;
 
         $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
         echo $url;
@@ -138,7 +147,7 @@ class ERPNextInterface
 
         // Verify the existence of the doctype first?
         // We get a "does not exist error" in the response
-
+        
         echo $url = $this->baseurl . 'api/resource/' . rawurlencode($doctype . '/' . $name);
         echo $url;
 
