@@ -21,6 +21,9 @@
         <p>Välkommen till Vårdcentralen i Mölndal – din lokala vårdcentral med fokus på trygg, tillgänglig och personcentrerad vård. Vi finns här för dig genom hela livet och erbjuder hälso- och sjukvård av hög kvalitet för både barn och vuxna.</p>
         <h2>Vårt uppdrag</h2>
         <p>Vårt uppdrag är att främja hälsa, förebygga sjukdom och ge god vård när du behöver den. Vi möter varje patient med respekt, lyhördhet och professionalitet, och strävar efter att skapa långsiktiga relationer där du känner dig sedd och delaktig.</p>
+        <h2>Våra tjänster</h2>
+        <p>Här på Vårdcentralen i Mölndal erbjuder vi en stor variant av tjänster, allt från influensashots, sjukvård för fysiska och psykiska besvär som vanliga sjukdomar, skador och kroniska tillstånd, till digital vård ifall det önskas.</p>
+        <h2></h2>
         <h1>Vårt team</h1>
 
         <div class="staff-view">
