@@ -17,67 +17,60 @@ if (!$sesh->active())
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <?php include "shared/header.php"; ?>
     <main>
-    <?php include "shared/header.php";
-    include "shared/erpnextinterface.php";
-    
-    ?>
-    <div>
-        <h1>Omboka tid</h1>
-    </div>
+    <h1>Tidsbokningar</h1>
     <?php
-    $createDoc = new erpnextinterface;
+      include "shared/erpnextinterface.php";
+      $createDoc = new ERPNextInterface();
 
-    if ($sesh->active())
-    {
-      $result = $createDoc->fetchAll('Patient', filters: [["Patient", "uid", "=", $sesh->id()]]);
-
-      if (sizeof($result['data']) == 1)
+      if ($sesh->active())
       {
-    $usr = $result['data']['0'];
-      }
-$patient= $usr["name"];
-$bookings = $createDoc->fetchAll('Patient Appointment', filters:[["Patient Appointment","patient_name", "=",$patient]], fields:["appointment_date","name","appointment_time", "practitioner_name"]);
-    }
-    echo "<table border='1' >";
-    $data=$bookings['data'];
-    echo "<th> Mina bokningar </th>";
+        $result = $createDoc->fetchAll('Patient', filters: [["Patient", "uid", "=", $sesh->id()]]);
 
-    $rows = count($bookings['data'])-1;
-        for($num = 0; $num <= $rows; $num++){
-        echo "<tr>";
-        echo "<td><form action='omboka.php' name='omboka' method='post'>";
-        echo "<input type='hidden'  name='bookingID' value='".$data[$num]['name']."'>";
-
-        echo "<td>". $data[$num]['appointment_date']. "\n". "</td>";  
-        echo "<td>". $data[$num]['appointment_time']. "\n". "</td>";  
-        echo "<td>". $data[$num]['practitioner_name']. "\n". "</td>";     
-
-  
-        echo "<td><input type='submit' value='Omboka'></td>";
-        
-    echo "</form></td>";
-        echo "</tr>";
+        if (sizeof($result['data']) == 1)
+        {
+          $usr = $result['data']['0'];
         }
 
-    echo "</table>";
-    
-   
-echo "<div>";
-echo "<a href='ansokavard.php'>Boka ny tid</a>";
+        $patient= $usr["name"];
+        $bookings = $createDoc->fetchAll('Patient Appointment', filters:[["Patient Appointment","patient_name", "=",$patient]], fields:["appointment_date","name","appointment_time", "practitioner_name"]);
+      }
+    ?>
 
-  echo "</div>";
+    <div class="container">
+      <table border='1'>
+        <tr>
+          <th colspan='4'> 
+            Mina bokningar 
+          </th>
+        </tr>
+        <?php
+          $data=$bookings['data'];
+          $rows = count($bookings['data'])-1;
+
+          for($num = 0; $num <= $rows; $num++)
+          {
+            echo "<tr>";
+            echo "<form action='omboka.php' name='omboka' method='post'>";
+            echo "<input type='hidden'  name='bookingID' value='".$data[$num]['name']."'>";
+            //echo "<td><input type='hidden'  name='bookingID' value='".$data[$num]['name']."'></td>";
+
+            echo "<td>". $data[$num]['appointment_date']. "\n". "</td>";  
+            echo "<td>". $data[$num]['appointment_time']. "\n". "</td>";  
+            echo "<td>". $data[$num]['practitioner_name']. "\n". "</td>";     
 
 
+            echo "<td><input type='submit' value='Omboka'></td>";
+              
+            echo "</form>";
+            echo "</tr>";
+          }
+        ?>
 
-
-
-
-
-     ?>
-    
-    
-
+        </table>
+      </div>
+      <a class='push-button' href='ansokavard.php'>Boka ny tid</a>
     </main>
     <?php include "shared/footer.php"; ?>
   </body>

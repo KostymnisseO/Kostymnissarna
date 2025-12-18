@@ -17,35 +17,27 @@ if (!$sesh->active())
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <?php include "shared/header.php"; ?>
     <main>
-    <?php include "shared/header.php";
+    <?php
     include "shared/erpnextinterface.php";
     
     ?>
-    <div>
-        <h1>Ansök om vård</h1>
-    </div>
+    <h1>Ansök om vård</h1>
     <?php
-    $createDoc = new erpnextinterface;
+      $createDoc = new ERPNextInterface();
 
-    if ($sesh->active())
-    {
-      $result = $createDoc->fetchAll('Patient', filters: [["Patient", "uid", "=", $sesh->id()]]);
-
-      if (sizeof($result['data']) == 1)
+      if ($sesh->active())
       {
-    $usr = $result['data']['0'];
+        $result = $createDoc->fetchAll('Patient', filters: [["Patient", "uid", "=", $sesh->id()]]);
+
+        if (sizeof($result['data']) == 1)
+        {
+          $usr = $result['data']['0'];
+        }
       }
-
-
-    }
    
-echo "<div>";
-echo "<table border='1' >";
-
-        echo "<th>Frågor Övergrippande kontakt orsak</th>";
-   
-        echo "<tr>";
+        echo "<div class='container'>";
           echo "<form action='ansokavard.php' method='post' id='kontaktForm'>";
 
           echo  "<input type='checkbox' id='feverDays' name='feverDays' value=1>";
@@ -67,11 +59,11 @@ echo "<table border='1' >";
           echo  "<label for='sickDays'> Har du varit sjuk i mer än 7 dagar?</label><br>";
 
           echo  "<label for='misc'> Beskriv dina besvär med max 150 ord:</label><br>";
-          echo  "<input type='text' id='misc' name='misc' maxlength='400'><br><br>";
+          echo  "<textarea id='misc' name='misc' maxlength='150'></textarea><br><br>";
 
           echo  "<label for='date'>datum för bokning (date and time):</label><br>";
+          
           $maxDate = strtotime("+3 months");
-
           echo "<input type='date' id='date' name='date' min='".date('Y-m-d')."' max ='".date("Y-m-d", $maxDate)."' required><br>";
 
           echo  "<label for='time'>tid för bokning</label><br>";
@@ -88,69 +80,58 @@ echo "<table border='1' >";
           echo "<tr><input type='submit' value='Submit'></tr>";
         
           echo "</form>";
-        echo "</tr>";
+        echo "</div>";
 
-    echo "</table>";
-    echo "</div>";
+        $dataArr = [
+          "patient"=> $usr['name'],
+          "feber_dagar" => 0,
+          "hosta" => 0, 
+          "blod_hosta" => 0, 
+          "tung_andning" => 0, 
+          "muskelvärk" => 0,
+          "sjuk_dagar" => 0,
+          "beskriv_besvär" => 'Nothing',
+          "tid" => '15:00',
+          "status" => 'Begärd',
+          "typvårdpersonal" => 'Sjuksköterska',
+          "bild_på_besvär" => "",
+          "datum" => 1999-12-12,
+        ];
 
-     $dataArr = [
-  "patient"=> $usr,
-  "feber_dagar" => 0,
-  "hosta" => 0, 
-  "blod_hosta" => 0, 
-  "tung_andning" => 0, 
-  "muskelvärk" => 0,
-  "sjuk_dagar" => 0,
-  "beskriv_besvär" => 'Nothing',
-  "tid" => '15:00',
-  "status" => 'Begärd',
-  "typvårdpersonal" => 'Sjuksköterska',
-  "bild_på_besvär" => "",
-  "datum" => 1999-12-12,
- ];
+        if (isset($_POST['feverDays'])){
+          $dataArr['feber_dagar'] = $_POST['feverDays'];
+        }
+        if (isset($_POST['cough'])){
+          $dataArr['hosta'] = $_POST['cough'];
+        }
+        if (isset($_POST['coughBlood'])){
+          $dataArr['blod_hosta'] = $_POST['coughBlood'];
+        }
+        if (isset($_POST['heavyBreath'])){
+          $dataArr['tung_andning'] = $_POST['heavyBreath'];
+        }
+        if (isset($_POST['ache'])){
+          $dataArr['muskelvärk'] = $_POST['ache'];
+        }
+        if (isset($_POST['sickDays'])){
+          $dataArr['sjuk_dagar'] = $_POST['sickDays'];
+        }
+        if (isset($_POST['misc'])){
+          $dataArr['beskriv_besvär'] = $_POST['misc'];
+        }
+        if (isset($_POST['typPers'])){
+          $dataArr['typvårdpersonal'] = $_POST['typPers'];
+        }
+        if (isset($_POST['bild'])){
+          $dataArr['bild_på_besvär'] = $_POST['bild'];
+        }
 
-  if (isset($_POST['feverDays'])){
-$dataArr['feber_dagar'] = $_POST['feverDays'];
- }
- if (isset($_POST['cough'])){
-$dataArr['hosta'] = $_POST['cough'];
- }
- if (isset($_POST['coughBlood'])){
-$dataArr['blod_hosta'] = $_POST['coughBlood'];
- }
- if (isset($_POST['heavyBreath'])){
-$dataArr['tung_andning'] = $_POST['heavyBreath'];
- }
- if (isset($_POST['ache'])){
-$dataArr['muskelvärk'] = $_POST['ache'];
- }
- if (isset($_POST['sickDays'])){
-$dataArr['sjuk_dagar'] = $_POST['sickDays'];
- }
- if (isset($_POST['misc'])){
-$dataArr['beskriv_besvär'] = $_POST['misc'];
- }
-  if (isset($_POST['typPers'])){
-$dataArr['typvårdpersonal'] = $_POST['typPers'];
- }
- if (isset($_POST['bild'])){
- $dataArr['bild_på_besvär'] = $_POST['bild'];
-
- }
-
- if ((isset($_POST['time'])) && (isset($_POST['date']))){
- $dataArr['datum'] = $_POST['date'];
- $dataArr['tid'] = $_POST['time'];
-$createDoc -> createDocType('G2KontaktForm',$dataArr);
- }
-
-
-
-
-     ?>
-    
-    
-
+        if ((isset($_POST['time'])) && (isset($_POST['date']))){
+          $dataArr['datum'] = $_POST['date'];
+          $dataArr['tid'] = $_POST['time'];
+          $createDoc -> createDocType('G2KontaktForm',$dataArr);
+        }
+      ?>
     </main>
     <?php include "shared/footer.php"; ?>
   </body>

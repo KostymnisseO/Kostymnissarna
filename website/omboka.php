@@ -17,8 +17,9 @@ if (!$sesh->active())
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <?php include "shared/header.php"; ?>
     <main>
-    <?php include "shared/header.php";
+    <?php 
     include "shared/erpnextinterface.php";
     
     ?>
@@ -42,75 +43,59 @@ if (!$sesh->active())
 
    
    
-echo "<div>";
-echo "<table border='1' >";
+        echo "<div class='container'>";
+            $patient= $usr["name"];
 
-        echo "<th>Omboka tid</th>";
-        $patient= $usr["name"];
+            //{"name":"HLC-APP-2025-00223","owner":"a24ludha@student.his.se","creation":"2025-12-18 16:39:48.895983","modified":"2025-12-18 16:39:48.983532","modified_by":"a24ludha@student.his.se","docstatus":0,"idx":0,"naming_series":"HLC-APP-.YYYY.-","title":"G2Niklas Drake with G2Alban Nwapa","status":"Scheduled","custom_status_copy":"","appointment_type":"Läkare","appointment_for":"Practitioner","company":"Hälsan","practitioner":"G2Alban Nwapa","practitioner_name":"G2Alban Nwapa","department":"G2läkarmottagning","appointment_date":"2026-01-22","patient":"G2Niklas Drake","patient_name":"G2Niklas Drake","patient_sex":"Prefer not to say","duration":0,"appointment_time":"13:00:00","appointment_datetime":"2026-01-22 13:00:00","add_video_conferencing":0,"event":"EV00287","invoiced":0,"paid_amount":0,"position_in_queue":0,"appointment_based_on_check_in":0,"reminded":0,"doctype":"Patient Appointment","__last_sync_on":"2025-12-18T16:48:50.215Z"}
+            $bookings = $createDoc->fetchAll('Patient Appointment', filters:[["Patient Appointment","patient_name", "=",$patient]], fields:["appointment_date","name","appointment_time", "practitioner_name"]);
 
-        //{"name":"HLC-APP-2025-00223","owner":"a24ludha@student.his.se","creation":"2025-12-18 16:39:48.895983","modified":"2025-12-18 16:39:48.983532","modified_by":"a24ludha@student.his.se","docstatus":0,"idx":0,"naming_series":"HLC-APP-.YYYY.-","title":"G2Niklas Drake with G2Alban Nwapa","status":"Scheduled","custom_status_copy":"","appointment_type":"Läkare","appointment_for":"Practitioner","company":"Hälsan","practitioner":"G2Alban Nwapa","practitioner_name":"G2Alban Nwapa","department":"G2läkarmottagning","appointment_date":"2026-01-22","patient":"G2Niklas Drake","patient_name":"G2Niklas Drake","patient_sex":"Prefer not to say","duration":0,"appointment_time":"13:00:00","appointment_datetime":"2026-01-22 13:00:00","add_video_conferencing":0,"event":"EV00287","invoiced":0,"paid_amount":0,"position_in_queue":0,"appointment_based_on_check_in":0,"reminded":0,"doctype":"Patient Appointment","__last_sync_on":"2025-12-18T16:48:50.215Z"}
-   $bookings = $createDoc->fetchAll('Patient Appointment', filters:[["Patient Appointment","patient_name", "=",$patient]], fields:["appointment_date","name","appointment_time", "practitioner_name"]);
+            echo "<form action='omboka.php' method='post' id='ombokaForm'>";
+            echo "<input type='hidden'  name='bookingID' value='".$_POST['bookingID']."'>";
+            echo  "<label for='date'>datum för bokning (date and time):</label><br>";
+            $maxDate = strtotime("+3 months");
 
-          echo "<form action='omboka.php' method='post' id='ombokaForm'>";
-          echo "<input type='hidden'  name='bookingID' value='".$_POST['bookingID']."'>";
-          echo  "<label for='date'>datum för bokning (date and time):</label><br>";
-          $maxDate = strtotime("+3 months");
+            echo "<input type='date' id='date' name='date' min='".date('Y-m-d')."' max ='".date("Y-m-d", $maxDate)."' required><br>";
 
-          echo "<input type='date' id='date' name='date' min='".date('Y-m-d')."' max ='".date("Y-m-d", $maxDate)."' required><br>";
+            echo  "<label for='time'>tid för bokning</label><br>";
+            echo "<input type='time' id='time' name='time' min='07:00' max ='17:00' step='3600' required><br>";
 
-          echo  "<label for='time'>tid för bokning</label><br>";
-          echo "<input type='time' id='time' name='time' min='07:00' max ='17:00' step='3600' required><br>";
-
-          echo  "<label for='typPers'>Vill du boka med läkare eller sjuksköterska?</label><br>";
-          echo "<select id='typPers' name='typPers' form='ombokaForm'>";
-          echo    "<option value='Sjuksköterska'>Sjuksköterska</option>";
-          echo    "<option value='Läkare'>Läkare</option>";
-          echo "</select><br>";
-      
-          echo "<tr><input type='submit' value='Submit'></tr>";
+            echo  "<label for='typPers'>Vill du boka med läkare eller sjuksköterska?</label><br>";
+            echo "<select id='typPers' name='typPers' form='ombokaForm'>";
+            echo    "<option value='Sjuksköterska'>Sjuksköterska</option>";
+            echo    "<option value='Läkare'>Läkare</option>";
+            echo "</select><br>";
         
-          echo "</form>";
-        echo "</tr>";
+            echo "<tr><input type='submit' value='Submit'></tr>";
+          
+            echo "</form>";
 
-    echo "</table>";
-    echo "</div>";
+        echo "</div>";
 
    
-   if (isset($_POST['bookingID'])){
-$bokID = $_POST['bookingID'];
- }
+        if (isset($_POST['bookingID'])){
+          $bokID = $_POST['bookingID'];
+        }
 
+        $dataArr = [
+          "patient"=> $usr,
+          "tid" => '15:00',
+          "status" => 'Begärd',
+          "typvårdpersonal" => 'Sjuksköterska',
+          "datum" => 1999-12-12,
+          "appointment_name" => $bokID,
+        ];
 
+        if (isset($_POST['typPers'])){
+          $dataArr['typvårdpersonal'] = $_POST['typPers'];
+        }
 
-     $dataArr = [
-  "patient"=> $usr,
-  "tid" => '15:00',
-  "status" => 'Begärd',
-  "typvårdpersonal" => 'Sjuksköterska',
-  "datum" => 1999-12-12,
-  "appointment_name" => $bokID,
- ];
+        if ((isset($_POST['time'])) && (isset($_POST['date']))){
+          $dataArr['datum'] = $_POST['date'];
+          $dataArr['tid'] = $_POST['time'];
+          $createDoc -> createDocType('G2OmbokaTid',$dataArr);
+        }
 
-
- 
-  if (isset($_POST['typPers'])){
-$dataArr['typvårdpersonal'] = $_POST['typPers'];
- }
-
-
- if ((isset($_POST['time'])) && (isset($_POST['date']))){
- $dataArr['datum'] = $_POST['date'];
- $dataArr['tid'] = $_POST['time'];
-$createDoc -> createDocType('G2OmbokaTid',$dataArr);
- }
-
-
-
-
-     ?>
-    
-    
-
+      ?>
     </main>
     <?php include "shared/footer.php"; ?>
   </body>
