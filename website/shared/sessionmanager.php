@@ -8,6 +8,7 @@ include_once 'dbmanager.php';
 class SessionManager
 {
     private $db = null;
+    private int $timeout_s = 3600; // 1 timme i sek
 
     function __construct()
     {
@@ -17,55 +18,77 @@ class SessionManager
             session_start();
         }
         
-        // Checka att sessionen är giltig
-        // if (!$this->isValid())
-        // {
-
-        // }
+        if ($this->active())
+        {
+            $diff = $this->db->fetchActivityTimeDiff(session_id());
+            
+            if ($diff[0]['time_diff'] > $this->timeout_s)
+            {
+                $this->end();
+            }
+        }
     }
     
-    public function register(string $id)
+    public function register(string $uid)
     {
-        // Magi för att registrera i databasen
-        // if ($db->fetchUserUID)
-        // {
-        //     $db->registerSession(realSession(), $id);
-        // }
+        if (!$this->active())
+        {
+            $id = $this->db->registerSession(session_id(), $uid);
+        }
         
-        
-        /* 
-            session_id() kan användas för att få sessionen i webbläsaren.
-            vi kan lagra det i databasen med en användares personnummer för att 
-            hålla en patient inloggad kopplad till personnummer 
-        */
-        
-        $_SESSION['id'] = $id;
+        return $this->active();
     }
     
     public function id()
     {
-        //$db->fetchUserUID(session_id());
+        if ($this->active())
+        {
+            $sesh = $this->db->fetchUserUID(session_id());
+            return 'G2:'.$sesh[0]['uid'];
+        }
         
-        return $_SESSION['id']; // gör om för att arbeta med tokens istället
-    }
-    
-    public function realSession()
-    {
-        return session_id(); // gör om för att arbeta med tokens istället
+        return null;
     }
     
     public function active()
     {
-        // Magi för att checka mot databasen
-
-        return (isset($_SESSION['id']) and !empty($_SESSION['id']));
+        $results = $this->db->fetchUserUID(session_id());
+        return (sizeof($results) == 1);
     }
     
     public function end()
     {
-        // Ta bort från databasen
+        if ($this->active())
+        {
+            $this->db->endSession(session_id());
+        }
         return session_unset();
     }
 }
 
+// $sesh = new SessionManager();
+
+// echo session_id();
+
+// echo '<br><br>';
+
+// // $reg = $sesh->register('123456780000');
+// // echo "REGISTERED: ";
+// // echo var_dump($reg);
+
+// $end = $sesh->end();
+// echo "ENDED: ";
+// echo var_dump($end);
+
+// echo '<br><br>';
+
+// $exists = $sesh->active();
+
+// echo var_dump($exists);
+
+// echo '<br><br>';
+
+// $uid = $sesh->id();
+
+// var_dump($sesh->id());
 ?>

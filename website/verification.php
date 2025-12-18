@@ -14,9 +14,7 @@
         exit();
     }
     
-    if (isset($_POST['pnr'])
-        and !empty($_POST['pnr'])
-        and preg_match('/[0-9]{12}/', $_POST['pnr']))
+    if (!$sesh->active() and preg_match('/[0-9]{12}/', $_POST['pnr']))
     {
         $erp = new ERPNextInterface();
         $pnr_erp = "G2:" . $_POST['pnr'];
@@ -25,9 +23,7 @@
  
         if (sizeof($result['data']) == 1)
         {
-            $usr = $result['data']['0'];
-
-            $sesh->register($usr['uid']);
+            $sesh->register($_POST['pnr']);
             header("Location: profile.php");
         }
         else
@@ -39,6 +35,4 @@
     {
         header("Location: login.php?err=invalidID");
     }
-    
-    exit();
 ?>
