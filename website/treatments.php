@@ -76,7 +76,7 @@
                     echo "<h1>" . "Behandlingar för " . $usr['name'] . "</h1>";
 
                     echo '<h2>' . 'Recept:' . '</h2>';
-
+                    echo '<div class="prescriptions-list">';
                     // Hämta samtliga Medication Requests för patienten med relevanta fält
                     $requests = $erp->fetchAll(
                         'Medication Request'
@@ -98,7 +98,7 @@
                             , 'docstatus'
                         ]
                     );
-
+                    
                     if (sizeof($requests['data']) > 0)
                     {
                         usort($requests['data'], function($a, $b) { return $a['docstatus'] <=> $b['docstatus']; });
@@ -167,6 +167,7 @@
                     {
                         echo '<strong>' . 'Hmm... vi kan inte se att du behövt några receptbelagda läkemedel än så länge.' . '</strong>';
                     }
+                    echo '</div>';
                 }
             }
         ?>

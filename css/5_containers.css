@@ -68,7 +68,10 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 2em;
-    margin: 2em auto 2em auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
     align-items: center;
 }
 
@@ -112,6 +115,10 @@
     gap: 2em;
 }
 
+#bankid-box form {
+    text-align: center;
+}
+
 .bankid-qr {
     position: relative;
     overflow: visible;
@@ -135,4 +142,16 @@
     animation: loading 2s ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;
+}
+
+.prescriptions-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2em;
+    align-items: center;
+}
+
+.prescriptions-list>div {
+    width: 100%;
 }
