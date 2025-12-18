@@ -63,9 +63,9 @@
             <select name="encounter">
               <?php
                 foreach ($encounters['data'] as $enc)
-                {
-                  echo '<option value="' , $enc['name'] , '">' . $enc['practitioner_name'] . ' - ' . $enc['encounter_date'] . '</option>';
-                }
+                  {
+                    echo '<option value="' , $enc['name'] , '">' . $enc['practitioner_name'] . ' - ' . $enc['encounter_date'] . '</option>';
+                  }
               ?>
             </select>
           </label>

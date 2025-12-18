@@ -48,6 +48,7 @@
                     echo '<a class="profile-link" href=""><img src="" alt="⚪" style="font-size:7em"/>Min Sida 1</a>';
                     echo '<a class="profile-link" href="treatments.php"><img src="" alt="💊" style="font-size:7em"/>Mina Behandlingar</a>';
                     echo '<a class="profile-link" href="tests.php"><img src="" alt="🧪" style="font-size:7em"/>Mina Prover</a>';
+                    echo '<a class="profile-link" href="bokningar.php"><img src="" alt="📅" style="font-size:7em"/>Mina bokningar</a>';
                     echo '<a class="profile-link" href="feedback.php"><img src="" alt="🩵" style="font-size:7em"/>Återkoppla</a>';
                 }
                 else if (false /* är vårdpersonal */)
