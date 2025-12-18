@@ -18,7 +18,7 @@
   </head>
   <body>
     <?php include "shared/header.php"; ?>
-    <main style="text-align:center;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:2em;padding:2em;">
+    <main class="main-flex-vertical">
         <form class="login-option-container" method="GET">
           <button class="login-option" name="login-as" value="patient">
             <img src="" alt="🩹" style="font-size:5em;">
@@ -43,7 +43,7 @@
             }
           }
         ?>
-        <div>
+        <div style="text-align:center;">
           <h1>Alla ska ha rätt till en god vård.</h1>
           <a href="">Klicka här om du vill lista dig hos Vårdcentralen i Mölndal</a>
           <p>På Vårdcentralen i Mölndal är vår grundläggande övertygelse att rätten till en god och jämlik vård utgör hjärtat i ett tryggt samhälle. För oss innebär detta att varje invånare, oavsett bakgrund eller livssituation, ska ha tillgång till medicinsk expertis som präglas av både hög kompetens och djup mänsklig värme. Genom att kombinera det lokala perspektivet med en modern vård bär vi ett gemensamt ansvar för att du som patient alltid ska känna dig sedd, hörd och prioriterad. Vi strävar efter att vara en tillgänglig resurs som inte bara behandlar sjukdom, utan som främjar hälsa genom hela livet, där din rätt till god vård alltid står i centrum för varje beslut vi fattar och varje möte vi skapar här i Mölndal.</p>

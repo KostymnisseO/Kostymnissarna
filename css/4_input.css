@@ -8,6 +8,7 @@ input[type=submit] {
     width: fit-content;
     font-weight: 500;
     border: none;
+    display: inline-block;
 }
 
 .push-button:hover ,
@@ -23,12 +24,20 @@ button:hover {
 
 input[type=text] ,
 input[type=password] ,
+select ,
 textarea {
     border-radius: 0.5em;
     border: 2px solid var(--azure);
-    color: var(--mint-700);
     padding: 0.7em;
+    
 }
+
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
 
 .login-option {
     display: flex;
@@ -47,23 +56,6 @@ textarea {
     flex-basis: 50%;
 }
 
-.bankid-qr {
-    position: relative;
-    overflow: visible;
-}
-
-.bankid-qr::after {
-    display: block;
-    position: absolute;
-    content: "";
-    height: 2px;
-    bottom: -1em;
-    background-color: var(--azure);
-    animation: loading 2s ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate-reverse;
-}
-
 @keyframes loading {
     0% {
         width: 2%;
@@ -77,4 +69,43 @@ textarea {
         width: 2%;
         left: 98%;
     }
+}
+
+
+#feedback {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#feedback fieldset {
+    border: none;
+}
+
+#feedback>fieldset>legend {
+    font-weight: bold;
+}
+
+#feedback input[type=radio] {
+    margin-right: 2em;
+}
+
+#feedback textarea {
+    min-height: 8em;
+}
+
+.feedback-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.feedback-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+#feedback label {
+    font-weight: 500;
 }
