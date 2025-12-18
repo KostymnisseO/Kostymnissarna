@@ -27,28 +27,27 @@
         <h1>Vårt team</h1>
 
         <div class="staff-view">
-                    <?php 
-                        $rows =$sak['data'] ?? [];
+          <?php 
+              $rows =$sak['data'] ?? [];
 
-                        foreach ($rows as $user) {
+              foreach ($rows as $user) {
 
-                            echo'<div class="staff-card container">';
-                            echo'<img src="" alt="🧑‍⚕️" style="font-size:7em;"/>';
-                            echo'<table>';
+                  echo'<div class="staff-card container">';
+                  echo'<img src="" alt="🧑‍⚕️" style="font-size:7em;"/>';
+                  echo'<table>';
 
-                                $first = $user['first_name'] ?? '';
-                                $last = $user['last_name'] ?? '';
-                                $gender = $user['gender'] ?? '';
-                                $avdelning = $user['department'] ?? '';
-                                echo '<tr><td>Förnamn</td><td>' . ($first) . ' ' . ($last) . '</td></tr>';
-                                echo '<tr><td>Kön</td><td>' . ($gender) . '</td></tr>';
-                                echo '<tr><td>Avdelning</td><td>' . ($avdelning) . '</td></tr>';
-                            
-                            echo'</table>';
-                            echo'</div>';
-                        }
-                    ?>
-        <!-- external php file? -->
+                      $first = $user['first_name'] ?? '';
+                      $last = $user['last_name'] ?? '';
+                      $gender = $user['gender'] ?? '';
+                      $avdelning = $user['department'] ?? '';
+                      echo '<tr><td>Namn</td><td>' . ($first) . ' ' . ($last) . '</td></tr>';
+                      echo '<tr><td>Kön</td><td>' . ($gender) . '</td></tr>';
+                      echo '<tr><td>Avdelning</td><td>' . ($avdelning) . '</td></tr>';
+                  
+                  echo'</table>';
+                  echo'</div>';
+              }
+          ?>
         </div>
     </main>
     <?php include "shared/footer.php"; ?>
