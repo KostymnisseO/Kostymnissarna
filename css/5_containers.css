@@ -57,31 +57,6 @@
     font-size: large;
 }
 
-.profile-grid {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 100%;
-    background-color: var(--ocean);
-    font-size: large;
-}
-
-.profile-grid * {
-    background-color: unset;
-    color: var(--silver-100);
-}
-
-.profile-grid main{
-    height: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    background-color: unset;
-    gap: 5em;
-    align-items: center;
-}
-
 .main-flex-vertical{
     display: flex;
     flex-direction: column;
@@ -91,11 +66,44 @@
     align-items: center;
 }
 
+.profile-grid {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: var(--ocean);
+    font-size: large;
+    align-items: center;
+    gap: 5em;
+}
+
+.profile-grid * {
+    background-color: unset;
+    color: var(--silver-100);
+    margin: 0;
+}
+
+.profile-grid main{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    background-color: unset;
+    gap: 5em;
+    align-items: center;
+    flex-grow: 0;
+}
+
+.profile-greeter {
+    text-align: center;
+}
+
+
 #bankid-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2em;
+    gap: 5em;
 }
 
 .bankid-qr {

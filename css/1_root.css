@@ -29,5 +29,5 @@
   --slate-900: #0e141f;
 
   /* --- Misc. --- */
-  --drop-shadow: color-mix(in srgb, var(--slate-900) 15%, transparent);
+  --drop-shadow: color-mix(in srgb, var(--slate-900) 20%, transparent);
 }

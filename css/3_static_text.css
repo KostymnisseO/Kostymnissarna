@@ -2,9 +2,9 @@ h1, h2, h3, h4, h5 {
   color: var(--ocean);  
 }
 
-/* h1 {
-
-} */
+h1 {
+    font-weight: 200;
+}
 
 /* h2 {
 
@@ -86,7 +86,7 @@ footer a {
     color: var(--silver-100);
     transition: background-color 0.3s;
     border-radius: 1.2em;
-    padding-bottom: 1em;
+    padding: 1.2em;
 }
 
 .profile-link:hover
@@ -98,4 +98,7 @@ footer a {
 {
     font-size: xx-large;
     display: block;
+    font-size: 5em;
+    text-align: center;
+    border: 0;
 }
