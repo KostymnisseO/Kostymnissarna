@@ -47,7 +47,7 @@
             <?php
                 if (true /* är vårdtagare */)
                 {
-                    echo '<a class="profile-link" href=""><img src="" alt="🚧" />Min Journal</a>';
+                    echo '<a class="profile-link" href="journal.php"><img src="" alt="📋" />Min Journal</a>';
                     echo '<a class="profile-link" href="treatments.php"><img src="" alt="💊" />Mina Behandlingar</a>';
                     echo '<a class="profile-link" href="tests.php"><img src="" alt="🧪" />Mina Prover</a>';
                     echo '<a class="profile-link" href="bokningar.php"><img src="" alt="📅" />Mina Bokningar</a>';
