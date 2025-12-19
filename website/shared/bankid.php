@@ -1,6 +1,14 @@
 <div id="bankid-box" class="inset-container">
-    <img style="max-height:5em;" src="https://www.bankid.com/assets/logo-bank-id-Bw0xWKml.svg" alt="BankID">
-
+    <?php
+        if($_POST['login-with'] == 'bankid')
+        {
+            echo '<img style="max-height:5em;" src="https://www.bankid.com/assets/logo-bank-id-Bw0xWKml.svg" alt="BankID">';
+        }
+        else if($_POST['login-with'] == 'frejaid')
+        {
+            echo '<img style="max-height:5em;" src="https://frejaeid.com/wp-content/uploads/2022/11/FrejaIndigo.png" alt="Freja eID">';
+        }
+    ?>
         <div class="bankid-qr">
             <img class="fade-in" src="https://randomqr.com/assets/images/rickroll-qrcode.webp" alt="BankID">
         </div>
@@ -12,5 +20,5 @@
         </form>
 
 
-        <a href="https://crouton.net/">Legitimera med BankID på denna enhet</a>
+        <a href="https://crouton.net/">Legitimera med <?php echo $_POST['login-with'] == 'frejaid' ? 'Freja eID' : 'BankID' ;?> på denna enhet</a>
 </div>
