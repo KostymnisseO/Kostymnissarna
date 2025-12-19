@@ -27,6 +27,8 @@ button:hover {
 
 input[type=text] ,
 input[type=password] ,
+input[type=date] ,
+input[type=time] ,
 select ,
 textarea {
     border-radius: 0.5em;
@@ -120,3 +122,17 @@ textarea {
     flex-direction: column;
     gap: 1em;
 }
+
+#kontaktForm select ,
+#kontaktForm input, 
+#kontaktForm textarea{
+    width:100%;
+    box-sizing: border-box;
+}
+
+#kontaktForm input[type=checkbox] {
+    width: unset;
+}
+
+
+

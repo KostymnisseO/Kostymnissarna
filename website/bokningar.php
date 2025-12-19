@@ -18,7 +18,7 @@ if (!$sesh->active())
   </head>
   <body>
     <?php include "shared/header.php"; ?>
-    <main>
+    <main class="main-flex-vertical">
     <h1>Tidsbokningar</h1>
     <?php
       include "shared/erpnextinterface.php";
@@ -39,7 +39,7 @@ if (!$sesh->active())
     ?>
 
     <div class="container">
-      <table border='1'>
+      <table border='1' class="appointment-table">
         <tr>
           <th colspan='4'> 
             Mina bokningar 

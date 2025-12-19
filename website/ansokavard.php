@@ -40,44 +40,64 @@ if (!$sesh->active())
         echo "<div class='container'>";
           echo "<form action='ansokavard.php' method='post' id='kontaktForm'>";
 
-          echo  "<input type='checkbox' id='feverDays' name='feverDays' value=1>";
-          echo  "<label for='feverDays'> Har du haft feber i över sju dygn? </label><br>";
+          echo  
+            "<label>" . 
+              "<input type='checkbox' id='feverDays' name='feverDays' value=1>" . 
+            "  Har du haft feber i över sju dygn?</label>";
 
-          echo  "<input type='checkbox' id='cough' name='cough' value=1>";
-          echo  "<label for='cough'> Har du hosta?</label><br>";
+          echo  
+            "<label for='cough'>" . 
+              "<input type='checkbox' id='cough' name='cough' value=1>" . 
+            "  Har du hosta?</label>";
 
-          echo  "<input type='checkbox' id='coughBlood' name='coughBlood' value=1>";
-          echo  "<label for='coughBlood'> Kommer det blod när du hostar?</label><br>";
+          echo  
+            "<label for='coughBlood'>" . 
+              "<input type='checkbox' id='coughBlood' name='coughBlood' value=1>" . 
+            "  Kommer det blod när du hostar?</label>";
 
-          echo  "<input type='checkbox' id='heavyBreath' name='heavyBreath' value=1>";
-          echo  "<label for='heavyBreath'> Känns det tungt när du andas?</label><br>";
+          echo  
+            "<label for='heavyBreath'>" . 
+              "<input type='checkbox' id='heavyBreath' name='heavyBreath' value=1>" . 
+            "  Känns det tungt när du andas?</label>";
 
-          echo  "<input type='checkbox' id='ache' name='ache' value=1>";
-          echo  "<label for='ache'> Har du muskelvärk och/eller huvudvärk?</label><br>";
+          echo  
+            "<label for='ache'>" . 
+              "<input type='checkbox' id='ache' name='ache' value=1>" . 
+            "  Har du muskelvärk och/eller huvudvärk?</label>";
+        
+          echo  
+            "<label for='sickDays'>" .
+              "<input type='checkbox' id='sickDays' name='sickDays' value=1>" .
+            "  Har du varit sjuk i mer än 7 dagar?</label>";
 
-          echo  "<input type='checkbox' id='sickDays' name='sickDays' value=1>";
-          echo  "<label for='sickDays'> Har du varit sjuk i mer än 7 dagar?</label><br>";
+          echo  "<br><label for='misc'> Beskriv dina besvär med max 150 ord:</label>";
+          echo  "<textarea id='misc' name='misc' maxlength='150'></textarea>";
 
-          echo  "<label for='misc'> Beskriv dina besvär med max 150 ord:</label><br>";
-          echo  "<textarea id='misc' name='misc' maxlength='150'></textarea><br><br>";
-
-          echo  "<label for='date'>datum för bokning (date and time):</label><br>";
-          
           $maxDate = strtotime("+3 months");
-          echo "<input type='date' id='date' name='date' min='".date('Y-m-d')."' max ='".date("Y-m-d", $maxDate)."' required><br>";
+          echo 
+            "<label for='date'>Datum:<br>".
+              "<input type='date' id='date' name='date' min='".date('Y-m-d')."' max ='".date("Y-m-d", $maxDate)."' required>".
+            "</label>";
 
-          echo  "<label for='time'>tid för bokning</label><br>";
-          echo "<input type='time' id='time' name='time' min='07:00' max ='17:00' step='3600' required><br>";
+          echo 
+            "<label for='time'>Tid:<br>".
+              "<input type='time' id='time' name='time' min='07:00' max ='17:00' step='3600' required>" .
+            "</label>";
 
-          echo  "<label for='typPers'>Vill du boka med läkare eller sjuksköterska?</label><br>";
-          echo "<select id='typPers' name='typPers' form='kontaktForm'>";
-          echo    "<option value='Sjuksköterska'>Sjuksköterska</option>";
-          echo    "<option value='Läkare'>Läkare</option>";
-          echo "</select><br>";
-          echo  "<label for='bild'>Ladda upp bild på ditt besvär</label><br>";
-          echo "<input type='file' id='bild' name='bild' accept='image/png, image/jpeg, image/jfif'><br>";
-      
-          echo "<tr><input type='submit' value='Submit'></tr>";
+          echo 
+            "<label for='typPers'>Vill du boka med läkare eller sjuksköterska?<br>" .
+              "<select id='typPers' name='typPers' form='kontaktForm'>" .
+                "<option value='Sjuksköterska'>Sjuksköterska</option>" .
+                "<option value='Läkare'>Läkare</option>" .
+              "</select>" . 
+            "</label>";
+          
+          echo 
+            "<label for='bild'>Ladda upp bild på ditt besvär (valfritt):<br>" .
+              "<input type='file' id='bild' name='bild' accept='image/png, image/jpeg, image/jfif'>" .
+            "</label>";
+
+          echo "<input type='submit' value='Submit'>";
         
           echo "</form>";
         echo "</div>";

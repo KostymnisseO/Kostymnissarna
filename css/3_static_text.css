@@ -123,3 +123,22 @@ footer h4 {
     margin: 0;
     margin-bottom: 0.6em;
 }
+
+
+.appointment-table {
+    border-collapse: collapse;
+    border: none;
+}
+
+.appointment-table th{
+    color: var(--ocean);
+    padding-bottom: 1em;
+    border: none;
+    font-size: larger;
+}
+
+.appointment-table td {
+    border: none;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+    border-top: 1px solid var(--azure) 
+}
