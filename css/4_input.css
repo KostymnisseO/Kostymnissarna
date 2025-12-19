@@ -9,6 +9,9 @@ input[type=submit] {
     font-weight: 500;
     border: none;
     display: inline-block;
+    transition-property: background-color;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
 }
 
 .push-button:hover ,
@@ -108,4 +111,12 @@ textarea {
 
 #feedback label {
     font-weight: 500;
+}
+
+
+
+#kontaktForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
