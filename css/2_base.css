@@ -1,5 +1,6 @@
 html * {
     font-family: 'Poppins', sans-serif; /* Weight from 100 to 900 */
+    font-weight: 400;
     background-color: var(--silver-100);
     color: var(--slate-900);
 }
