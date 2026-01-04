@@ -18,7 +18,7 @@ create table user_session (
 drop table if exists session_history;
 
 create table session_history (
-    id int auto_increment,
+    id int auto_increment, #1
     session_id varchar(100),
     uid char(12) not null,
     started datetime not null,
@@ -36,6 +36,8 @@ drop procedure if exists end_outdated;
 
 create procedure end_outdated ()
 begin
+    set @timeout = 5; -- 1 timme i sekunder
+
     insert into session_history(session_id, uid, started, last_activity)
     select 
         user_session.id,
@@ -43,9 +45,9 @@ begin
         user_session.started,
         user_session.last_activity
     from user_session
-    where timestampdiff(second, started, user_session.last_activity) >= 3600;
+    where timestampdiff(second, user_session.last_activity, now()) >= @timeout;
 
-    delete from user_session where timestampdiff(second, started, user_session.last_activity) >= 3600;
+    delete from user_session where timestampdiff(second, user_session.last_activity, now()) >= @timeout;
 end;
 
 
@@ -54,7 +56,7 @@ drop procedure if exists register_session;
 
 create procedure register_session (in in_session_id varchar(100), in in_uid char(12))
 begin
-    call end_outdated();
+    call end_outdated;
 
     insert into user_session(id, uid) values 
     (
@@ -108,3 +110,4 @@ begin
 end;
 
 -- call get_uid('fy742b47fcb9fe');
+call end_outdated;
