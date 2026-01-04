@@ -61,3 +61,7 @@ nav {
     align-items: center;
     gap: 2em;
 }
+
+hr {
+    color: var(--azure);
+}

@@ -142,3 +142,55 @@ footer h4 {
     padding: 1.5em 1.5em 1.5em 1.5em;
     border-top: 1px solid var(--azure) 
 }
+
+.test-card ul {
+    list-style-type: none;
+}
+
+
+
+#home-main {
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+    padding: 5em 0 5em 0;
+    margin: 0;
+    max-width: unset;
+    width: 100%;
+}
+
+#cover-img p,  
+#cover-img a {
+    background: none;
+    color: var(--silver-100);
+    margin: 0.2em;
+}
+
+
+.hori-content h1 {
+    color: var(--silver-100);
+    background: none;
+    margin: 1em;
+}
+
+.hori-content p {
+    flex-shrink: 3;
+    padding: 3em;
+    margin: 0;
+    background-color: white;
+}
+
+
+#newsfeed article {
+    display: inline-block;
+    width: 30em;
+    max-height: 20em;
+    overflow: hidden;
+    max-width: 20em;
+    margin: 2em;
+    white-space: wrap;
+}
+
+#final-words img {
+    max-height: 10em;
+}
