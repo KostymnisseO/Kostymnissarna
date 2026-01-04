@@ -32,10 +32,30 @@ create table session_history (
 
 /* --- PROCEDURES --- */
 
+drop procedure if exists end_outdated;
+
+create procedure end_outdated ()
+begin
+    insert into session_history(session_id, uid, started, last_activity)
+    select 
+        user_session.id,
+        user_session.uid,
+        user_session.started,
+        user_session.last_activity
+    from user_session
+    where timestampdiff(second, started, user_session.last_activity) >= 3600;
+
+    delete from user_session where timestampdiff(second, started, user_session.last_activity) >= 3600;
+end;
+
+
+
 drop procedure if exists register_session;
 
 create procedure register_session (in in_session_id varchar(100), in in_uid char(12))
 begin
+    call end_outdated();
+
     insert into user_session(id, uid) values 
     (
         in_session_id,
